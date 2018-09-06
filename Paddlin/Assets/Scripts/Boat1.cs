@@ -18,7 +18,7 @@ public class Boat1 : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(GetComponent<Rigidbody>().velocity.magnitude > 5.6f)
+        if(GetComponent<Rigidbody>().velocity.magnitude > 6.6f)
         {
             GetComponent<Rigidbody>().velocity *= 990f / 1000f;
         }
@@ -242,7 +242,7 @@ public class Boat1 : MonoBehaviour
     {
         Debug.Log("working");
         yield return new WaitForSeconds(0.15f);
-        GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, -3.2f), ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, -4.2f), ForceMode.Impulse);
         yield return new WaitForSeconds(1f);
     }
 

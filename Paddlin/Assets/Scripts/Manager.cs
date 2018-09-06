@@ -24,16 +24,22 @@ public class Manager : MonoBehaviour
         if (ControlsController.KeyboardON == true)
         {
             team1.GetComponent<Boat1>().enabled = true;
-            team2.GetComponent<Boat2>().enabled = true;
             team1.GetComponent<Boat1C>().enabled = false;
-            team2.GetComponent<Boat2C>().enabled = false;
+            if (SceneManager.GetActiveScene().name == ("MulitplayerPlayer"))
+            {
+                team2.GetComponent<Boat2>().enabled = true;
+                team2.GetComponent<Boat2C>().enabled = false;
+            }
         }
         else
         {
             team1.GetComponent<Boat1>().enabled = false;
-            team2.GetComponent<Boat2>().enabled = false;
             team1.GetComponent<Boat1C>().enabled = true;
-            team2.GetComponent<Boat2C>().enabled = true;
+            if (SceneManager.GetActiveScene().name == ("MulitplayerPlayer"))
+            {
+                team2.GetComponent<Boat2>().enabled = false;
+                team2.GetComponent<Boat2C>().enabled = true;
+            }
         }
     }
 

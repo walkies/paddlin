@@ -15,9 +15,21 @@ public class Boat2C : MonoBehaviour
     private float p2OTimer;
     private float spinTimer;
 
+    private float forwardsTimer;
+    private float forwardsTimer2;
+
+    public int P1FC;
+    public int P2FC;
+    public int P1FC2;
+    public int P2FC2;
 
     void FixedUpdate()
     {
+        P1FC++;
+        P2FC++;
+        P1FC2++;
+        P2FC2++;
+
         bool p3x = Input.GetButton("P3X");
         bool p3a = Input.GetButton("P3A");
         bool p3b = Input.GetButton("P3B");
@@ -38,6 +50,120 @@ public class Boat2C : MonoBehaviour
         p1OTimer = Time.timeSinceLevelLoad;
         p2OTimer = Time.timeSinceLevelLoad;
 
+        #region JointMovement
+        if (p3x == true && p4x == true && p1Timer < Time.timeSinceLevelLoad && p2Timer < Time.timeSinceLevelLoad)
+        {
+            if (p3L.activeSelf == true && (p4L.activeSelf == true))
+            {
+                PaddleLeft(p3L);
+                PaddleLeft(p4L);
+                p1Timer = Time.timeSinceLevelLoad + 1;
+                p2Timer = Time.timeSinceLevelLoad + 1;
+                StartCoroutine("AdvancedTurnLeft");
+            }
+            else
+            {
+                p3R.SetActive(false);
+                p3L.SetActive(true);
+                p4R.SetActive(false);
+                p4L.SetActive(true);
+                PaddleLeft(p3L);
+                PaddleLeft(p4L);
+                p1Timer = Time.timeSinceLevelLoad + 1;
+                p2Timer = Time.timeSinceLevelLoad + 1;
+                StartCoroutine("AdvancedTurnLeft");
+            }
+        }
+        if (p3b == true && p4b == true && p1Timer < Time.timeSinceLevelLoad && p2Timer < Time.timeSinceLevelLoad)
+        {
+            if (p3R.activeSelf == true && (p4R.activeSelf == true))
+            {
+                PaddleRight(p3R);
+                PaddleRight(p4R);
+                p1Timer = Time.timeSinceLevelLoad + 1;
+                p2Timer = Time.timeSinceLevelLoad + 1;
+                StartCoroutine("AdvancedTurnRight");
+            }
+            else
+            {
+                p3L.SetActive(false);
+                p3R.SetActive(true);
+                p4L.SetActive(false);
+                p4R.SetActive(true);
+                PaddleRight(p3R);
+                PaddleRight(p4R);
+                p1Timer = Time.timeSinceLevelLoad + 1;
+                p2Timer = Time.timeSinceLevelLoad + 1;
+                StartCoroutine("AdvancedTurnRight");
+            }
+        }
+
+        if (Input.GetKeyDown("joystick 3 button 2") && forwardsTimer < Time.timeSinceLevelLoad)
+        {
+            P1FC = 0;
+            if (p3L.activeSelf == true)
+            {
+                forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
+                forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
+                ForwardsAssit();
+            }
+            else
+            {
+                forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
+                forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
+                ForwardsAssit();
+            }
+        }
+
+        if (Input.GetKeyDown("joystick 4 button 1") && forwardsTimer2 < Time.timeSinceLevelLoad)
+        {
+            P2FC = 0;
+            if (p4R.activeSelf == true)
+            {
+                forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
+                forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
+                ForwardsAssit();
+            }
+            else
+            {
+                forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
+                forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
+                ForwardsAssit();
+            }
+        }
+
+        if (Input.GetKeyDown("joystick 3 button 1") && forwardsTimer < Time.timeSinceLevelLoad)
+        {
+            P1FC2 = 0;
+            if (p3R.activeSelf == true)
+            {
+                forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
+                forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
+                ForwardsAssit();
+            }
+            else
+            {
+                forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
+                forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
+                ForwardsAssit();
+            }
+        }
+        if (Input.GetKeyDown("joystick 4 button 2") && forwardsTimer2 < Time.timeSinceLevelLoad)
+        {
+            P2FC2 = 0;
+            if (p4L.activeSelf == true)
+            {
+                forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
+                forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
+                ForwardsAssit();
+            }
+            else
+            {
+                forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
+                forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
+                ForwardsAssit();
+            }
+        }
         #region baseMovement
         if (p3x == true && p1Timer < Time.timeSinceLevelLoad)
         {
@@ -110,96 +236,21 @@ public class Boat2C : MonoBehaviour
             }
         }
         #endregion
-
-        #region JointMovement
-        if (p3x == true && p4x == true && p1Timer < Time.timeSinceLevelLoad && p2Timer < Time.timeSinceLevelLoad)
-        {
-            if (p3L.activeSelf == true && (p4L.activeSelf == true))
-            {
-                PaddleLeft(p3L);
-                PaddleLeft(p4L);
-                p1Timer = Time.timeSinceLevelLoad + 1;
-                p2Timer = Time.timeSinceLevelLoad + 1;
-                StartCoroutine("AdvancedTurnLeft");
-            }
-            else
-            {
-                p3R.SetActive(false);
-                p3L.SetActive(true);
-                p4R.SetActive(false);
-                p4L.SetActive(true);
-                PaddleLeft(p3L);
-                PaddleLeft(p4L);
-                p1Timer = Time.timeSinceLevelLoad + 1;
-                p2Timer = Time.timeSinceLevelLoad + 1;
-                StartCoroutine("AdvancedTurnLeft");
-            }
-        }
-        if (p3b == true && p4b == true && p1Timer < Time.timeSinceLevelLoad && p2Timer < Time.timeSinceLevelLoad)
-        {
-            if (p3R.activeSelf == true && (p4R.activeSelf == true))
-            {
-                PaddleRight(p3R);
-                PaddleRight(p4R);
-                p1Timer = Time.timeSinceLevelLoad + 1;
-                p2Timer = Time.timeSinceLevelLoad + 1;
-                StartCoroutine("AdvancedTurnRight");
-            }
-            else
-            {
-                p3L.SetActive(false);
-                p3R.SetActive(true);
-                p4L.SetActive(false);
-                p4R.SetActive(true);
-                PaddleRight(p3R);
-                PaddleRight(p4R);
-                p1Timer = Time.timeSinceLevelLoad + 1;
-                p2Timer = Time.timeSinceLevelLoad + 1;
-                StartCoroutine("AdvancedTurnRight");
-            }
-        }
-
-        if (p3x == true && p4b == true && p1Timer < Time.timeSinceLevelLoad && p2Timer < Time.timeSinceLevelLoad)
-        {
-            if (p3L.activeSelf == true && (p4R.activeSelf == true))
-            {
-                p1Timer = Time.timeSinceLevelLoad + 0.2f;
-                p2Timer = Time.timeSinceLevelLoad + 0.2f;
-                StartCoroutine("MoveForwards");
-            }
-            else
-            {
-                p1Timer = Time.timeSinceLevelLoad + 0.2f;
-                p2Timer = Time.timeSinceLevelLoad + 0.2f;
-                p3R.SetActive(false);
-                p3L.SetActive(true);
-                p4L.SetActive(false);
-                p4R.SetActive(true);
-                StartCoroutine("MoveForwards");
-            }
-        }
-
-        if (p3b == true && p4x == true && p1Timer < Time.timeSinceLevelLoad && p2Timer < Time.timeSinceLevelLoad)
-        {
-            if (p3R.activeSelf == true && (p4L.activeSelf == true))
-            {
-                p1Timer = Time.timeSinceLevelLoad + 0.2f;
-                p2Timer = Time.timeSinceLevelLoad + 0.2f;
-                StartCoroutine("MoveForwards");
-            }
-            else
-            {
-                p1Timer = Time.timeSinceLevelLoad + 0.2f;
-                p2Timer = Time.timeSinceLevelLoad + 0.2f;
-                p3L.SetActive(false);
-                p3R.SetActive(true);
-                p4R.SetActive(false);
-                p4L.SetActive(true);
-                StartCoroutine("MoveForwards");
-            }
-        }
     }
     #endregion
+
+    public void ForwardsAssit()
+        {
+            if (P1FC == 0 && P2FC <= 5 || P2FC == 0 && P1FC <= 5 || P1FC2 == 0 && P2FC2 <= 5 || P2FC2 == 0 && P1FC2 <= 5)
+            {
+                StartCoroutine("MoveForwards");
+            }
+            if (P1FC == 0 && P2FC <= 20 || P2FC == 0 && P1FC <= 20 || P1FC2 == 0 && P2FC2 <= 20 || P2FC2 == 0 && P1FC2 <= 20)
+            {
+                StartCoroutine("MoveForwardsWeak");
+            }
+        }
+
 
     public void PaddleLeft(GameObject paddler)
     {
@@ -255,7 +306,7 @@ public class Boat2C : MonoBehaviour
     {
         Debug.Log("working");
         yield return new WaitForSeconds(0.15f);
-        GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, -3.2f), ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, 0, -4.2f), ForceMode.Impulse);
         yield return new WaitForSeconds(1f);
     }
 
