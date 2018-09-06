@@ -29,7 +29,7 @@ public class Finish : MonoBehaviour
                 StartCoroutine(End(4));
             }
         }
-        else
+        else if (SceneManager.GetActiveScene().name == ("MultiPlayer"))
         {
             if (col.CompareTag("Team1"))
             {
