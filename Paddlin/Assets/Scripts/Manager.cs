@@ -25,7 +25,7 @@ public class Manager : MonoBehaviour
         {
             team1.GetComponent<Boat1>().enabled = true;
             team1.GetComponent<Boat1C>().enabled = false;
-            if (SceneManager.GetActiveScene().name == ("MulitplayerPlayer"))
+            if (SceneManager.GetActiveScene().name == ("MultiPlayer"))
             {
                 team2.GetComponent<Boat2>().enabled = true;
                 team2.GetComponent<Boat2C>().enabled = false;
@@ -35,7 +35,7 @@ public class Manager : MonoBehaviour
         {
             team1.GetComponent<Boat1>().enabled = false;
             team1.GetComponent<Boat1C>().enabled = true;
-            if (SceneManager.GetActiveScene().name == ("MulitplayerPlayer"))
+            if (SceneManager.GetActiveScene().name == ("MultiPlayer"))
             {
                 team2.GetComponent<Boat2>().enabled = false;
                 team2.GetComponent<Boat2C>().enabled = true;

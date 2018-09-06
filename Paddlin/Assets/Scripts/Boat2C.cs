@@ -104,13 +104,11 @@ public class Boat2C : MonoBehaviour
             if (p3L.activeSelf == true)
             {
                 forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
-                forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
                 ForwardsAssit();
             }
             else
             {
                 forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
-                forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
                 ForwardsAssit();
             }
         }
@@ -120,13 +118,11 @@ public class Boat2C : MonoBehaviour
             P2FC = 0;
             if (p4R.activeSelf == true)
             {
-                forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
                 forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
                 ForwardsAssit();
             }
             else
             {
-                forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
                 forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
                 ForwardsAssit();
             }
@@ -138,13 +134,11 @@ public class Boat2C : MonoBehaviour
             if (p3R.activeSelf == true)
             {
                 forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
-                forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
                 ForwardsAssit();
             }
             else
             {
                 forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
-                forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
                 ForwardsAssit();
             }
         }
@@ -153,13 +147,11 @@ public class Boat2C : MonoBehaviour
             P2FC2 = 0;
             if (p4L.activeSelf == true)
             {
-                forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
                 forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
                 ForwardsAssit();
             }
             else
             {
-                forwardsTimer = Time.timeSinceLevelLoad + 0.5f;
                 forwardsTimer2 = Time.timeSinceLevelLoad + 0.5f;
                 ForwardsAssit();
             }
